@@ -1,48 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   AppRegistry,
-  StyleSheet,
   Text,
+  ViewPagerAndroid,
   View,
 } from 'react-native';
 
-const styles = StyleSheet.create({
+
+const styles = {
   container: {
     flex: 1,
-    justifyContent: 'center',
+  },
+  pageStyle: {
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    padding: 20,
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+};
 
-class platformSpecificComponents extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
-  }
-}
+
+const platformSpecificComponents = () => (
+  <ViewPagerAndroid
+    style={{ flex: 1 }}
+    initialPage={0}
+  >
+    <View style={styles.pageStyle}>
+      <Text>First page</Text>
+    </View>
+    <View style={styles.pageStyle}>
+      <Text>Second page</Text>
+    </View>
+  </ViewPagerAndroid>
+);
 
 
 AppRegistry.registerComponent('platformSpecificComponents', () => platformSpecificComponents);
